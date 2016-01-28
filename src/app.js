@@ -1,11 +1,11 @@
 'use strict'
 
 const xmpp = require('node-xmpp-server')
-var server = null
 
 const COMPONENT_PORT = process.env.COMPONENT_PORT ? process.env.COMPONENT_PORT : 6666
 const COMPONENT_PASS = process.env.COMPONENT_PASS ? process.env.COMPONENT_PASS : 'password'
 
+var server = null
 const startServer = function (done) {
   server = new xmpp.ComponentServer({
     port: COMPONENT_PORT
