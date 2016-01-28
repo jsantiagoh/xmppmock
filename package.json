@@ -1,0 +1,15 @@
+{
+  "name": "xmppmock",
+  "version": "0.0.1",
+  "description": "A simple XMPP endpoint for components to connect to",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-xmpp-server": "^2.1.2",
+    "node-xmpp-component": "^2.0.0"
+  }
+}
