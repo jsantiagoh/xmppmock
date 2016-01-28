@@ -4,7 +4,7 @@ const xmpp = require('node-xmpp-server')
 const Component = require('node-xmpp-component')
 var server = null
 
-const COMPONENT_PORT = process.env.COMPONENT_PORT ? process.env.COMPONENT_PORT : 5347
+const COMPONENT_PORT = process.env.COMPONENT_PORT ? process.env.COMPONENT_PORT : 6666
 const COMPONENT_PASS = process.env.COMPONENT_PASS ? process.env.COMPONENT_PASS : 'password'
 
 var startServer = function (done) {

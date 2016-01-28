@@ -1,0 +1,25 @@
+#!/bin/bash
+set -e
+
+operation=$1
+shift
+
+docker_build() {
+  docker build  -t xmppmock .
+}
+
+docker_run() {
+  docker run -it -p 6666:6666 --rm --name xmppmock-1 xmppmock
+}
+
+case "$operation" in
+  run)
+    docker_build
+    docker_run
+    ;;
+
+  *)
+    echo "Invalid operation: $operation"
+    exit 1
+    ;;
+esac
