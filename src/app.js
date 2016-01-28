@@ -1,13 +1,12 @@
 'use strict'
 
 const xmpp = require('node-xmpp-server')
-const Component = require('node-xmpp-component')
 var server = null
 
 const COMPONENT_PORT = process.env.COMPONENT_PORT ? process.env.COMPONENT_PORT : 6666
 const COMPONENT_PASS = process.env.COMPONENT_PASS ? process.env.COMPONENT_PASS : 'password'
 
-var startServer = function (done) {
+const startServer = function (done) {
   server = new xmpp.ComponentServer({
     port: COMPONENT_PORT
   })
@@ -18,13 +17,9 @@ var startServer = function (done) {
       return cb(null, COMPONENT_PASS)
     })
 
-    component.on('online', function () {
-      console.log(`online, ready to receive components at ${COMPONENT_PORT}`)
-    })
+    component.on('online', () => console.log(`online, ready to receive components at ${COMPONENT_PORT}`))
 
-    component.on('stanza', (stanza) => {
-      console.log(`[R] ${stanza.root().toString()}`)
-    })
+    component.on('stanza', (stanza) => console.log(`[R] ${stanza.root().toString()}`))
 
     component.on('disconnect', () => console.log('disconnect'))
   })
@@ -32,4 +27,4 @@ var startServer = function (done) {
   server.on('listening', done)
 }
 
-startServer(() => console.log("initialization done, happy hacking"))
+startServer(() => console.log('initialization done, happy hacking'))

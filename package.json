@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-xmpp-server": "^2.1.2",
-    "node-xmpp-component": "^2.0.0"
+    "node-xmpp-server": "^2.1.2"
   }
 }

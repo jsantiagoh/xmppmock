@@ -18,6 +18,10 @@ case "$operation" in
     docker_run
     ;;
 
+  runrepo)
+    docker run -it -p 6666:6666 --rm --name xmppmock-1 jsantiagoh/xmppmock
+    ;;
+
   *)
     echo "Invalid operation: $operation"
     exit 1
