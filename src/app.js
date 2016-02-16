@@ -1,30 +1,46 @@
 'use strict'
 
-const xmpp = require('node-xmpp-server')
+const express = require('express')
+const Xmpp = require('./xmpp')
+const Database = require('./db')
 
 const COMPONENT_PORT = process.env.COMPONENT_PORT ? process.env.COMPONENT_PORT : 6666
 const COMPONENT_PASS = process.env.COMPONENT_PASS ? process.env.COMPONENT_PASS : 'password'
 
-var server = null
-const startServer = function (done) {
-  server = new xmpp.ComponentServer({
-    port: COMPONENT_PORT
+const xmpp = new Xmpp(COMPONENT_PORT, COMPONENT_PASS)
+
+const db = new Database()
+xmpp.addStanzaHandler((stanza) => {
+  db.insert(stanza, (err, newdoc) => {
+    if (err) console.error(`error inserting document: ${err}`)
   })
+})
 
-  server.on('connect', function (component) {
-    component.on('verify-component', function (jid, cb) {
-      console.log(`verify-component '${jid}' on port ${COMPONENT_PORT}, expecting password '${COMPONENT_PASS}'`)
-      return cb(null, COMPONENT_PASS)
-    })
+const app = express()
+app.use(require('morgan')('dev'))
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  next(err)
+})
 
-    component.on('online', () => console.log(`online, ready to receive components at ${COMPONENT_PORT}`))
+app.get('/', (req, res) => {
+  res.json({ status: 'ok' }).end()
+})
 
-    component.on('stanza', (stanza) => console.log(`[R] ${stanza.root().toString()}`))
-
-    component.on('disconnect', () => console.log('disconnect'))
+app.get('/v1/stanzas', (req, res) => {
+  db.findAll((err, docs) => {
+    if (err) {
+      res.status(500).send(err).end()
+    }
+    res.json(docs).end()
   })
+})
 
-  server.on('listening', done)
-}
+app.delete('/v1/stanzas', (req, res) => {
+  db.flush()
+  res.status(200).end()
+})
 
-startServer(() => console.log('initialization done, happy hacking'))
+app.listen(3000, () => { console.log('XMPP Mock listening on port 3000!') })
+
+xmpp.start()

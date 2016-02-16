@@ -5,11 +5,21 @@
   "main": "src/app.js",
   "scripts": {
     "start" : "node src/app.js",
-    "test": "standard"
+    "test": "standard && mocha test/*.spec.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-xmpp-server": "^2.1.2"
-  }
+    "node-xmpp-server": "^2.1.2",
+    "express": "^4.13.4",
+    "morgan": "^1.6.1",
+    "nedb": "^1.7.2"
+  },
+  "standard": {
+  "globals": [
+    "it",
+    "describe",
+    "beforeEach"
+  ]
+}
 }
