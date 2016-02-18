@@ -16,7 +16,10 @@ class Eventer extends EventEmitter {}
 const emitter = new Eventer()
 
 const db = new Database()
+
+// Indicates if something received through XMPP
 var dirty = false
+
 xmpp.addStanzaHandler((stanza) => {
   db.insert(stanza, (err, newdoc) => {
     if (err) {
@@ -40,7 +43,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/v1/stanzas', (req, res) => {
-  let findAndRespond = function () {
+  function findAndRespond () {
     db.findAll((err, docs) => {
       if (err) {
         res.status(500).send(err).end()

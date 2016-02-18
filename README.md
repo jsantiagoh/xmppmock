@@ -1,10 +1,10 @@
 # xmppmock
 
-Extremely simple XMPP component server that just acts as an endpoint for other components to connect to.
-
-Can be used along with Docker when developing a service that requires a live XMPP connection.
+Extremely simple XMPP component server that just acts as an endpoint for other components to connect
+to and run integration tests. This is not intended for anything other that running tests against.
 
 # Requirements
+- Docker
 
 # Running
-- use Docker
+- `cat Makefile`
