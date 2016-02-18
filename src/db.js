@@ -1,20 +1,28 @@
 'use strict'
 
-const Database = function () {
-  const Datastore = require('nedb')
-  this.db = new Datastore()
-}
+class Database {
+  constructor () {
+    const Datastore = require('nedb')
+    this.db = new Datastore()
+  }
 
-Database.prototype.insert = function (stanza, callback) {
-  this.db.insert({xml: `${stanza}`}, callback)
-}
+  insert (stanza, callback) {
+    this.db.insert({xml: `${stanza}`}, callback)
+  }
 
-Database.prototype.findAll = function (callback) {
-  this.db.find({}, callback)
-}
+  findAll (callback) {
+    this.db.find({}, callback)
+  }
 
-Database.prototype.flush = function () {
-  this.db.remove({}, { multi: true })
+  flush () {
+    this.db.remove({}, { multi: true }, (err, numRemoved) => {
+      if (err) {
+        console.error(`error flushing database: ${err}`)
+      } else {
+        console.log(`flushed ${numRemoved} stanzas from the db`)
+      }
+    })
+  }
 }
 
 module.exports = Database
