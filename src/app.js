@@ -64,6 +64,11 @@ app.get('/v1/stanzas', (req, res) => {
   }
 })
 
+app.post('/v1/stanzas', (req, res) => {
+  xmpp.send(req.query.stanza)
+  res.status(200).end()
+})
+
 app.delete('/v1/stanzas', (req, res) => {
   db.flush()
   dirty = false
