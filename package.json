@@ -10,8 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "ewait": "^0.2.1",
     "express": "^4.13.4",
+    "ltx": "^2.2.0",
     "morgan": "^1.6.1",
     "nedb": "^1.7.2",
     "node-xmpp-server": "^2.1.2"
