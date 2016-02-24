@@ -5,6 +5,7 @@ const EventEmitter = require('events')
 const ewait = require('ewait')
 const Xmpp = require('./xmpp')
 const Database = require('./db')
+const bodyParser = require('body-parser');
 
 const COMPONENT_PORT = process.env.COMPONENT_PORT ? process.env.COMPONENT_PORT : 6666
 const COMPONENT_PASS = process.env.COMPONENT_PASS ? process.env.COMPONENT_PASS : 'password'
@@ -32,6 +33,7 @@ xmpp.addStanzaHandler((stanza) => {
 })
 
 const app = express()
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(require('morgan')('dev'))
 app.use((err, req, res, next) => {
   console.error(err.stack)
@@ -65,7 +67,8 @@ app.get('/v1/stanzas', (req, res) => {
 })
 
 app.post('/v1/stanzas', (req, res) => {
-  xmpp.send(req.query.stanza)
+  console.log(req.body)
+  xmpp.send(req.body.stanza)
   res.status(200).end()
 })
 
