@@ -5,7 +5,7 @@ const EventEmitter = require('events')
 const ewait = require('ewait')
 const Xmpp = require('./xmpp')
 const Database = require('./db')
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser')
 
 const COMPONENT_PORT = process.env.COMPONENT_PORT ? process.env.COMPONENT_PORT : 6666
 const COMPONENT_PASS = process.env.COMPONENT_PASS ? process.env.COMPONENT_PASS : 'password'

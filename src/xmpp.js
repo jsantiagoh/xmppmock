@@ -16,7 +16,7 @@ const Xmpp = function (componentPort, componentPass) {
 
   const self = this
   this.server.on('connect', function (component) {
-    this.component = component;
+    this.component = component
 
     component.on('verify-component', function (jid, cb) {
       console.log(`verify-component '${jid}' on port ${self.componentPort}, expecting password '${self.componentPass}'`)
@@ -44,8 +44,8 @@ Xmpp.prototype.start = function (done) {
   this.server.on('listening', doneFunc)
 }
 
-Xmpp.prototype.send = function(stanzaString) {
-  if(!this.server.component){
+Xmpp.prototype.send = function (stanzaString) {
+  if (!this.server.component) {
     console.error('component is not connected')
   }
   var stanza = xml.parse(stanzaString)

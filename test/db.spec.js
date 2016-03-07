@@ -3,7 +3,7 @@
 const assert = require('assert')
 const Database = require('../src/db')
 
-const stanza = `<message type="chat" from="some.user.001@test.domain" to="nagios.fitnesse700.2214@test.domain" id="nb0xq" xmlns:stream="http://etherx.jabber.org/streams"><body>hello world</body></message>`
+const stanza = '<message type="chat" from="some.user.001@test.domain" to="nagios.fitnesse700.2214@test.domain" id="nb0xq" xmlns:stream="http://etherx.jabber.org/streams"><body>hello world</body></message>'
 
 describe('the database', function () {
   const db = new Database()
