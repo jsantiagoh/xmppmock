@@ -40,5 +40,4 @@ services:
       - 3000:3000
 ```
 
-[![Build Status](https://travis-ci.org/jsantiagoh/xmppmock.svg?branch=master)](https://travis-ci.org/jsantiagoh/xmppmock) 
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/) [![Build Status](https://travis-ci.org/jsantiagoh/xmppmock.svg?branch=master)](https://travis-ci.org/jsantiagoh/xmppmock) [![Code Climate](https://codeclimate.com/github/jsantiagoh/xmppmock/badges/gpa.svg)](https://codeclimate.com/github/jsantiagoh/xmppmock)
