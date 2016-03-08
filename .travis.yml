@@ -1,14 +1,14 @@
 language: node_js
 node_js:
-  - "5.7.1"
-
+- 5.7.1
 addons:
-    code_climate:
-        repo_token: 0f7acc4413dd48072003263795e33f3481395fdb8d6664638bfef5369899446a
+  code_climate:
+    repo_token:
+      secure: bTzckWMXxd0TO8GUEi2Mg4AU/IniEXKUNjtsUGRXdRdooTw9mECUKk3YqUDy38uZbMW5W3FXwK4DwYwrIjSzNIBSWdiFhTMYVNF5bLDQdIHtk7kw9yu8TyVZext+nxESwVcuMYaKe+9yY49Ca/I2lXxnfPVuMzXIb2ku7ToSKPPFMB3xizE4UEq7LRbZ5ioXeCUAMFp8NvHZ6Dryh4L/kM5/D14FJsh9z2Bfus/UezZwT0XTCb6O0Kwc39K+eNHeZTQvInCD6274vU8AQOsCY+Kc/q114jI2wMLwgNqEn0YZTwXSyqzt9iwqMpapw6PC6/JDCZvm1eUkKS7nQr9IqRmN8FZ4VP0Ht5/uQf709V1ESwCMMo/59IesuQz7fFd03r+mAYUaET7rEZ3CYz9UeSU7/+cTVrYU0Z1j60ZVl5PQyBMKrk2vXxYXZkwbSSozDTPEusQxdigNYLv6AatBVZG8uJTGSEU7PkQ7FKfBQ2uCGgJW75s7tZ1BLt6jqHRtH1k8JSYWyhT6qeC8gotRDuP6G8fCeXzCMjBcj0ii8qvJArCQeCqfBluBdomgdlE+rWm4+DxyZZvAcQm6098XdwOWTa14s8sxMaTSBbq7gjas5EbPakGwa7XpZdQZ3GrcDRy8I8++T0S+B8bz/GnvZRperkt+8zM55Nv3UciK/FM=
 
 before_script:
-  - npm install -g standard
-  - npm install -g mocha
+- npm install -g standard
+- npm install -g mocha
 
 after_script:
-  - codeclimate-test-reporter < lcov.info
+- codeclimate-test-reporter < lcov.info
