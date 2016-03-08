@@ -17,10 +17,14 @@ Development Requirements
 Usage
 =====
 
+I recommend using this alongside [Docker compose](https://docs.docker.com/compose/) to test some service connecting to _XMPP Mock_.
+
+For example, below is a sample `docker-compose.yml` that builds and starts a service named _myservice_ connecting to an instance of _xmppmock_.
+
 ```yaml
 version: "2"
 services:
-  mycomponent:
+  myservice:
     build: .
     links:
       - xmppmock:xmppmock.local
@@ -36,5 +40,5 @@ services:
       - 3000:3000
 ```
 
-
+[![Build Status](https://travis-ci.org/jsantiagoh/xmppmock.svg?branch=master)](https://travis-ci.org/jsantiagoh/xmppmock) 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
