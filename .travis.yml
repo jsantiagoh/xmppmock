@@ -1,7 +1,11 @@
 language: node_js
 node_js:
   - "5.7.1"
-  
+
 before_script:
   - npm install -g standard
   - npm install -g mocha
+
+addons:
+    code_climate:
+        repo_token: 0f7acc4413dd48072003263795e33f3481395fdb8d6664638bfef5369899446a
