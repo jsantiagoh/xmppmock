@@ -1,8 +1,8 @@
 'use strict'
+const Datastore = require('nedb')
 
 class Database {
   constructor () {
-    const Datastore = require('nedb')
     this.db = new Datastore()
   }
 
