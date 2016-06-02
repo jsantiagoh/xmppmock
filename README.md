@@ -36,6 +36,8 @@ services:
     environment:
       - COMPONENT_PORT=11221
       - COMPONENT_PASS=pass11221
+      - SERVER_HOST = xmppmock.local
+      - SERVER_PORT=5552
     ports:
       - 3000:3000
 ```
